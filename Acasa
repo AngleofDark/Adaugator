@@ -1,0 +1,249 @@
+First day
+1.
+#include <iostream>
+using namespace std;
+int main()
+
+{
+    double numar1, numar2, media;
+    
+    cout<<"Introduceti primul numar";
+    cin>> numar1;
+    
+    cout<<"Introduceti al doilea numar";
+    cin>> numar2;
+    
+    media = (numar1+numar2)/2 ;
+
+    cout<<media<<endl;
+    return 0;
+}
+2.
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    
+    srand(time(nullptr));
+
+    
+    int numarSecret = rand() % 100 + 1;
+    int ghicire;
+    int numarIncercari = 0;
+
+    cout << "Salut! Ghiceste numarul intreg intre 1 si 100." << endl;
+
+    do {
+       
+        cout << "Ghiceste numarul: ";
+        cin >> ghicire;
+        numarIncercari++;
+
+        if (ghicire > numarSecret) {
+            cout << "Prea mare! Incearca din nou." << endl;
+        } else if (ghicire < numarSecret) {
+            cout << "Prea mic! Incearca din nou." << endl;
+        } else {
+            cout << "Felicitari! Ai ghicit numarul " << numarSecret << " in " << numarIncercari << " incercari!" << endl;
+        }
+    } while (ghicire != numarSecret);
+
+    return 0;
+}
+3.
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    
+    srand(time(nullptr));
+
+    cout << "Incepe!" << endl;
+
+    char continua;
+    do {
+        
+        int zar1 = rand() % 6 + 1;
+        int zar2 = rand() % 6 + 1;
+        int suma = zar1 + zar2;
+
+        cout << "Zarurile au fost aruncate. Suma este: " << suma << endl;
+
+        if (suma == 7 || suma == 11) {
+            cout << "Ai castigat!" << endl;
+        } else if (suma == 2 || suma == 3 || suma == 12) {
+            cout << "Ai pierdut!" << endl;
+        } else {
+            cout << "Zero. Jocul continua." << endl;
+        }
+
+        cout << "Din nou? (da/n): ";
+        cin >> continua;
+    } while (continua == 'd' || continua == 'D');
+
+    cout << "Waste." << endl;
+
+    return 0;
+}
+Second day
+1.#include <iostream>
+
+using namespace std;
+
+int main() {
+    int numar;
+
+    cout << "Introduceti un numar intreg: ";
+    cin >> numar;
+
+    if (numar % 2 == 0) {
+        cout << "Numarul " << numar << " este par." << endl;
+    } else {
+        cout << "Numarul " << numar << " este impar." << endl;
+    }
+
+    return 0;
+}
+2.
+#include <iostream>
+#include <cmath> 
+
+using namespace std;
+
+int main() {
+    double baza, exponent, rezultat;
+    
+    cout << "Introduceti baza: ";
+    cin >> baza;
+
+    cout << "Introduceti exponentul: ";
+    cin >> exponent;
+    
+    rezultat = pow(baza, exponent);
+
+    cout << "Rezultatul ridicarii la putere este: " << rezultat << endl;
+
+    return 0;
+}
+3. 
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double numar, suma = 0;
+    int numarElemente = 0;
+
+    cout << "Introduceti numere pozitive. Introduceti un numar negativ pentru a opri." << endl;
+
+    while (true) {
+        cout << "Introduceti un numar: ";
+        cin >> numar;
+
+        if (numar < 0) {
+            break;
+        }
+
+        suma += numar;
+        numarElemente++;
+    }
+
+    double media = 0;
+    if (numarElemente > 0) {
+        media = suma / numarElemente;
+    }
+
+    cout << "Suma numerelor introduse este: " << suma << endl;
+    cout << "Media numerelor introduse este: " << media << endl;
+
+    return 0;
+}
+Third day
+1.
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    double numar1, numar2, numar3;
+
+    cout << "Introduceti primul numar: ";
+    cin >> numar1;
+
+    cout << "Introduceti al doilea numar: ";
+    cin >> numar2;
+
+    cout << "Introduceti al treilea numar: ";
+    cin >> numar3;
+
+    double celMaiMare = numar1;
+    if (numar2 > celMaiMare) {
+        celMaiMare = numar2;
+    }
+    if (numar3 > celMaiMare) {
+        celMaiMare = numar3;
+    }
+
+    cout << "Cel mai mare numar:  " << celMaiMare << endl;
+
+    return 0;
+}
+2.
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    string sir;
+    cout << "Introduceti un sir de caractere: ";
+    getline(cin, sir);
+
+    sir.erase(remove_if(sir.begin(), sir.end(), ::isspace), sir.end());
+
+    bool estePalindrom = true;
+    int lungime = sir.length();
+    for (int i = 0; i < lungime / 2; ++i) {
+        if (tolower(sir[i]) != tolower(sir[lungime - 1 - i])) {
+            estePalindrom = false;
+            break;
+        }
+    }
+
+    if (estePalindrom) {
+        cout << "Sirul introdus este un palindrom." << endl;
+    } else {
+        cout << "Sirul introdus nu este un palindrom." << endl;
+    }
+
+    return 0;
+}
+3.
+#include <iostream>
+
+using namespace std;
+
+unsigned long long factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+int main() {
+    int numar;
+
+    cout << "Introduceti un numar intreg: ";
+    cin >> numar;
+
+    cout << "Factorialul lui " << numar << " este: " << factorial(numar) << endl;
+
+    return 0;
+}
